@@ -1,0 +1,36 @@
+﻿@using Task.Models.Entites
+@model Item
+
+@{
+    ViewData["Title"] = "Add New Task";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="AddItem" method="post">
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div style="margin-bottom:10px;">
+        <label asp-for=@Model.Id></label><br />
+        <input asp-for=@Model.Id required />
+    </div>
+
+    <div style="margin-bottom:10px;">
+        <label asp-for=@Model.Name></label><br />
+        <input asp-for=@Model.Name required />
+    </div>
+
+    <div style="margin-bottom:10px;">
+        <label asp-for=@Model.Description></label><br />
+        <textarea id="description" asp-for=@Model.Description>@Model?.Description</textarea>
+    </div>
+
+    <div style="margin-bottom:10px;">
+        <label asp-for=@Model.IsCompleted></label><br />
+        <input  asp-for="@Model.IsCompleted" />
+    </div>
+
+    <button asp-action="AddItem" type="submit">Add Task</button>
+    <a asp-action="Index" style="margin-left:10px;">Back to List</a>
+</form>
